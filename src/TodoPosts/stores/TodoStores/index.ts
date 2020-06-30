@@ -2,18 +2,18 @@ import { observable, action, computed } from 'mobx'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { API_INITIAL, APIStatus } from '@ib/api-constants'
 
-import TodoService from '../../services/TodoService/index'
+import TodoPostService from '../../services/TodoPostServices/index'
 
-import TodoModel from '../models/TodoModel'
-import { TodoObject } from '../types'
+import TodoModel from '../Models/index'
+import { TodoPostObject } from '../types'
 
-class TodoStore {
-  todoService: TodoService
+class TodoPostsStore {
+  todoService: TodoPostService
   @observable getTodoListAPIStatus!: APIStatus
   @observable getTodoListAPIError!: Error | null
   @observable todos!: Array<TodoModel>
 
-  constructor(todoService: TodoService) {
+  constructor(todoService: TodoPostService) {
     this.todoService = todoService
     this.init()
   }
@@ -36,37 +36,21 @@ class TodoStore {
   }
 
   @action.bound
-  setTodoListResponse(response: Array<TodoObject> | null) {
+  setTodoListResponse(response: Array<TodoPostObject> | null) {
     if (response) {
       this.todos = response.map(todo => {
-        return new TodoModel(todo, this.todoService)
+        return new TodoModel(todo)
       })
     }
   }
 
   @action.bound
   getTodoList() {
-    const getTodosPromise = this.todoService.getTodosAPI()
+    const getTodosPromise = this.todoService.getTodosPostsAPI()
     return bindPromiseWithOnSuccess(getTodosPromise)
       .to(this.setGetTodoListAPIStatus, this.setTodoListResponse)
       .catch(this.setGetTodoListAPIError)
   }
-
-  @action.bound
-  addNewTodo(todoInput) {
-    const todoObject = {
-      id: Math.random(),
-      title: todoInput,
-      isCompleted: false
-    }
-    const newTodo = new TodoModel(todoObject, this.todoService)
-    this.todos.unshift(newTodo)
-  }
-
-  @computed
-  get todosLeftCount() {
-    return this.todos.filter(todo => !todo.isCompleted).length
-  }
 }
 
-export default TodoStore
+export default TodoPostsStore

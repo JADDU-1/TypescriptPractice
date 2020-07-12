@@ -1,0 +1,13 @@
+{
+  "useCases": {
+    "normal": "साधारण",
+    "plural": "बहुवचन",
+    "parametrized": "Parametrized"
+  },
+  "addTodo": "टूडू जोड़ें",
+  "todosLeft": "टूडू को छोड़ दिया",
+  "todosLeft_plural": "तोडो छोड़ दिया",
+  "todosLeftParameter": "फिर भी {{count}} टूडू को छोड़ दिया",
+  "todosLeftParameter_plural": "फिर भी {{count}} टूडू को छोड़ दिया",
+  "todoWithParameter": "करने के लिए - {{todoText}}"
+}

@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 import ReactLogo from '../../components/common/Icons/ReactLogo'
 import {
   SAMPLE_ROUTE_PATH,
-  TODOS_ROUTE_PATH
+  TODOS_ROUTE_PATH,
+  VIDEO_ANIMATION,
+  DRAG_DROP
 } from '../../constants/NavigationConstants'
 
 import './index.css'
@@ -29,6 +31,8 @@ function HomeRoute() {
         <Link to={SAMPLE_ROUTE_PATH}>Sample Route</Link>
         <Link to={TODOS_ROUTE_PATH}>Todos</Link>
         <Link to={TODOS_POSTS_ROUTE_PATH}>Todo Posts</Link>
+        <Link to={VIDEO_ANIMATION}>Video Animation</Link>
+        <Link to={DRAG_DROP}>Drag And Drop</Link>
       </header>
     </div>
   )

@@ -55,5 +55,13 @@
   "workbench.panel.defaultLocation": "right",
   "terminal.integrated.rendererType": "dom",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "cSpell.words": [
+    "Agasthyan",
+    "Eliamma",
+    "Rima",
+    "Suzi",
+    "Thomason",
+    "esnext"
+  ]
 }
